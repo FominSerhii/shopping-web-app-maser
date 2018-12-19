@@ -1,0 +1,51 @@
+<div>
+  <button mat-raised-button (click)="openDialog()">Create a  new product</button>
+</div>
+
+<div *ngFor="let product of products">
+
+  <mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>
+        {{ product.name }}
+      </mat-header-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef>
+        {{ product.price }} UAH
+      </mat-header-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>
+        {{ product.description }}
+      </mat-header-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="imagePath">
+      <mat-header-cell *matHeaderCellDef>
+        {{ product.imagePath }}
+      </mat-header-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="create">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-raised-button (click)="onEdit(product)"><i class="material-icons">create</i></button>
+      </mat-header-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-button (click)="deleteProduct(product)"><i class="material-icons">delete_outline</i></button>
+      </mat-header-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns" color="primary"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns "></mat-row>
+
+  </mat-table>
+
+</div>

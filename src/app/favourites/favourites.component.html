@@ -1,0 +1,33 @@
+<div class="continer" *ngIf="favouriteProducts.length > 0">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="form-group">
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="term"
+              required
+              placeholder="Find">
+      </div>
+
+    </div>
+
+      <div *ngFor='let product of favouriteProducts |  filter:term' class="col-md-4 item-product">
+
+        <h4>{{ product.name }}</h4>
+        <p>{{ product.price }} UAH</p>
+        <p>{{ product.description }}</p>
+        <img [src]="product.imagePath" alt="{{ product.imagePath }}" class="img-responsive">
+
+        <div class="col-md-12">
+          <button mat-button><i class="material-icons" (click)="onDeleteFavourite(product)">delete</i></button>
+        </div>
+
+      </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="favouriteProducts.length === 0">
+  <app-no-products-found [title]="messageTitle" [description]="messageDescription"></app-no-products-found>
+</div>

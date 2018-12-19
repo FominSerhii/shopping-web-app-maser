@@ -1,0 +1,37 @@
+<app-header></app-header>
+
+<hr>
+
+<div class="routeContainer" [@routeAnimation]='getDepth(myOutlet)'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-12'>
+        <a routerLink='/products'><button mat-button>Products</button></a>
+
+        <a routerLink='/favourites'>
+          <button mat-button> Favourites
+            {{ favouritesService.favouritesCount }}
+          </button>
+        </a>
+
+        <a routerLink='/cart'>
+          <button mat-button>Cart
+            <i class="material-icons">add_shopping_cart</i>
+            {{ cartService.cartCount }}
+          </button>
+        </a>
+
+        <a routerLink='/adminproducts' *ngIf="authService.user | async"><button mat-button>Admin Product</button></a>
+
+        <a routerLink='/signup'><button mat-button>Sign Up</button></a>
+        <a routerLink='/signin'><button mat-button>Sign In</button></a>
+        <button mat-button (click)="logout()" *ngIf="authService.user | async">Logout</button>
+
+        <hr>
+
+         <router-outlet #myOutlet='outlet'></router-outlet>
+
+      </div>
+    </div>
+  </div>
+</div>
