@@ -16,6 +16,7 @@ import { FavouritesService } from '../../favourites/favourites.service';
 
 export class ProductListComponent implements OnInit {
 
+  term;
   products: any;
   product: Product = new Product();
 
