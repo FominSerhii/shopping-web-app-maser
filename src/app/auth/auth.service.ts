@@ -68,7 +68,7 @@ export class AuthService {
 		  console.log('Success!', value),
       alert('Great');
       this.router.navigate(['/']);
-		}).catch(error => alert('Oops, something wrong, please check'));
+    })
 	}
 
 	signinUser(email: string, password: string) {
@@ -82,9 +82,7 @@ export class AuthService {
             )
         }
         )
-      .catch(
-        error => alert('No such user, please sign up, and try again!'),
-			);
+
 	}
 
   isLoggedIn(): boolean {

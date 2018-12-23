@@ -33,7 +33,4 @@ export class CartComponent implements OnInit {
   getCartProduct() {
     this.cartProducts = this.cartService.getLocalCartProduct();
   }
-  fuc(){
-    
-  }
 }

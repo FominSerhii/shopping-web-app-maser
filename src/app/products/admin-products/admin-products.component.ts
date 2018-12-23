@@ -61,7 +61,6 @@ export class AdminProductsComponent implements OnInit {
 
   deleteProduct(product: Product) {
     this.productsService.deleteProduct(product);
-    alert("Are you sure?")
   }
 
 }

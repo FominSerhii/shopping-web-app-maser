@@ -30,7 +30,6 @@ export class FavouritesService {
     let a: Product[];
     a = JSON.parse(localStorage.getItem('fav_item')) || [];
     a.push(product);
-    alert('You really want to add in favourites')
     setTimeout(() => {
       localStorage.setItem('fav_item', JSON.stringify(a));
       this.calculateCartCount();

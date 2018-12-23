@@ -27,7 +27,6 @@ export class CartService {
     a = JSON.parse(localStorage.getItem('cart_item')) || [];
 
     a.push(product);
-    alert('You really want to add in cart')
     setTimeout(() => {
       localStorage.setItem('cart_item', JSON.stringify(a));
       this.calculateCartCount();
