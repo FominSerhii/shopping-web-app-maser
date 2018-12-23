@@ -16,15 +16,10 @@ export class FavouritesService {
   favouritesCount = 0;
 
   constructor(private authService: AuthService,
-              private db: AngularFireDatabase) { }
+              private db: AngularFireDatabase) { 
+                this.calculatefavouritesCount();
+              }
 
-  getUsersFavouriteProduct() {
-    const user = this.authService.getLoggedInUser();
-    this.favouriteProducts = this.db.list('favouriteProducts', (ref) =>
-      ref.orderByChild('userId').equalTo(user.key)
-    );
-    return this.favouriteProducts;
-  }
 
   addToFavouriteProduct(product: Product): void {
     let a: Product[];
@@ -32,7 +27,7 @@ export class FavouritesService {
     a.push(product);
     setTimeout(() => {
       localStorage.setItem('fav_item', JSON.stringify(a));
-      this.calculateCartCount();
+      this.calculatefavouritesCount();
     }, 500);
   }
 
@@ -56,10 +51,10 @@ export class FavouritesService {
       }
     }
     localStorage.setItem('fav_item', JSON.stringify(products));
-    this.calculateCartCount();
+    this.calculatefavouritesCount();
   }
 
-  calculateCartCount() {
+  calculatefavouritesCount() {
     this.favouritesCount = this.getLocalFavouriteProduct().length;
   }
 
