@@ -13,6 +13,6 @@ export class Product {
   price: number;
   description: string;
   imagePath: string;
-  favourite: boolean;
+
 
 }

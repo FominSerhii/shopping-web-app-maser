@@ -40,6 +40,8 @@ import { AdminProductsComponent } from './products/admin-products/admin-products
 import { NoProductsFoundComponent } from './favourites/no-products-found/no-products-found.component';
 import { AdminProductsCreateComponent } from './products/admin-products/admin-products-create/admin-products-create.component';
 
+import { ToastrModule } from 'ngx-toastr';
+
 import { environment } from '../environments/environment';
 import { NoProductscartComponent } from './cart/no-productscart/no-productscart.component';
 
@@ -81,7 +83,8 @@ import { NoProductscartComponent } from './cart/no-productscart/no-productscart.
     AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     Ng2SearchPipeModule,
-    OrderModule
+    OrderModule,
+    ToastrModule.forRoot() 
   ],
   exports: [
     MatButtonModule,

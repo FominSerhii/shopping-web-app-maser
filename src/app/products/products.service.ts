@@ -26,7 +26,12 @@ export class ProductsService {
   }
 
   createProduct(product: Product) {
-    this.productsRef.push(product);
+    this.productsRef.push({
+      name: product.name,
+      price: product.price,
+      description: product.description,
+      imagePath: product.imagePath
+    })
   }
 
   getProductById(key: string) {
@@ -35,7 +40,13 @@ export class ProductsService {
   }
 
   updateProduct(product: Product) {
-    this.productsRef.update(product.key, product);
+    this.productsRef.update(product.key, {
+        name: product.name,
+        price: product.price,
+        description: product.description,
+        imagePath: product.imagePath
+
+    });
   }
 
   deleteProduct(product: Product) {
