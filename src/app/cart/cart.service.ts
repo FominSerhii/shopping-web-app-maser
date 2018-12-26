@@ -10,6 +10,7 @@ import { Product } from '../products/products.component';
 })
 export class CartService {
 
+ 
   cartProducts: AngularFireList<Product>;
   private cart: Product[] = [];
 

@@ -14,7 +14,7 @@ export class FavouritesService {
   private favourite: Product[] = [];
 
   favouritesCount = 0;
-
+  count = 1;
   constructor(private authService: AuthService,
               private db: AngularFireDatabase) { 
                 this.calculatefavouritesCount();

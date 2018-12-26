@@ -23,9 +23,9 @@
 
         <a routerLink='/adminproducts' *ngIf="authService.user | async"><button mat-button>Admin Product</button></a>
 
-        <a routerLink='/signup'><button mat-button>Sign Up</button></a>
-        <a routerLink='/signin'><button mat-button>Sign In</button></a>
-        <button mat-button (click)="logout()" *ngIf="authService.user | async">Logout</button>
+        <a *ngIf="!authService.isLoggedIn()" routerLink='/signup'><button mat-button>Sign Up</button></a>
+        <a *ngIf="!authService.isLoggedIn()" routerLink='/signin'><button mat-button>Sign In</button></a>
+        <a routerLink='/products'> <button mat-button (click)="logout()" *ngIf="authService.user | async">Logout</button></a>
 
         <hr>
 

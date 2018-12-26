@@ -1,9 +1,11 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+
+import { ToastrService } from '../toastr.service';
 
 import { User } from '../user.model';
 import { UserService } from './user.service';
@@ -24,7 +26,8 @@ export class AuthService {
 	constructor(private firebaseAuth: AngularFireAuth,
               private router: Router,
               private db: AngularFireDatabase,
-              private userService: UserService) {
+              private userService: UserService,
+              public toastrService: ToastrService) {
 		this.user = firebaseAuth.authState;
     this.dbUser = new User();
     this.user.subscribe(user => {
@@ -65,9 +68,8 @@ export class AuthService {
 
 	signupUser(email: string, password: string) {
 		this.firebaseAuth.auth.createUserWithEmailAndPassword(email, password).then((value) => {
-		  console.log('Success!', value),
-      alert('Great');
       this.router.navigate(['/']);
+      this.toastrService.success('Account is creation');
     })
 	}
 

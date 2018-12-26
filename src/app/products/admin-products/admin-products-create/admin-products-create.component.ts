@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { FormGroup, FormControl, Validators, NgForm, FormBuilder } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import {  ToastrService } from '../../../toastr.service';
 import { Product } from '../../products.component';
 import { ProductsService } from '../../products.service';
 import { AngularFireDatabase} from 'angularfire2/database';
@@ -29,7 +29,7 @@ export class AdminProductsCreateComponent implements OnInit {
               private formBuilder: FormBuilder,
               public db: AngularFireDatabase,
               public dialogRef: MatDialogRef<AdminProductsCreateComponent>,
-              public toasterService: ToastrService) { }
+              public toastr: ToastrService) { }
 
   ngOnInit() {}
 
@@ -40,7 +40,6 @@ export class AdminProductsCreateComponent implements OnInit {
       this.productsService.updateProduct(productForm.value);
     this.resetForm(productForm);
      this.dialogRef.close();
-    // this.toasterService.success("Product add")
      }
 
   resetForm(productForm?: NgForm) {

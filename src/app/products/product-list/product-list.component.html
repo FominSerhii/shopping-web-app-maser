@@ -9,11 +9,16 @@
             required
             placeholder="Find">
       </div>
+      
+      <div class="sort">
+        <button mat-raised-button type="button" (click)="sort()">Sort by price</button>
+      </div>
+    
 
       <hr>
 
     </div>
-    <div *ngFor="let product of products | filter:term | orderBy:'price'" class="col-md-4 item-product">
+    <div *ngFor="let product of products | filter:term |  sort: {property: column, order: order}" class="col-md-4 item-product">
 
       <h4>{{ product.name }} </h4>
       <p>{{ product.price }} UAH</p>
@@ -21,9 +26,10 @@
       <img [src]="product.imagePath" alt="{{ product.imagePath }}" class="img-responsive">
 
       <div class="col-md-12">
-        <button mat-button><i class="material-icons" (click)="addToFavourites(product)">favorite</i></button>
+        
+        <button mat-button (click)="addToFavourites(product)"><i class="material-icons">favorite</i></button>
 
-        <button mat-button><i class="material-icons" (click)="addToCart(product)">add_shopping_cart</i></button>
+        <button mat-button (click)="addToCart(product)"><i class="material-icons" >add_shopping_cart</i></button>
       </div>
 
       <hr>

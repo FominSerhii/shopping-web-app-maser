@@ -3,6 +3,7 @@ import { Component, Inject, OnInit} from '@angular/core';
 
 import { map } from 'rxjs/operators';
 
+import { ToastrService } from '../../toastr.service';
 import { Product } from '../products.component';
 import { ProductsService } from '../../products/products.service'
 import { AdminProductsCreateComponent } from './admin-products-create/admin-products-create.component';
@@ -28,7 +29,8 @@ export class AdminProductsComponent implements OnInit {
   dialogResult = '';
 
   constructor(public matdialog: MatDialog,
-              private productsService: ProductsService) {}
+              private productsService: ProductsService,
+              public toastr: ToastrService) {}
 
   openDialog(): void {
     let dialogRef = this.matdialog.open(AdminProductsCreateComponent, { width: '500px' });
@@ -61,6 +63,7 @@ export class AdminProductsComponent implements OnInit {
 
   deleteProduct(product: Product) {
     this.productsService.deleteProduct(product);
+    this.toastr.info("Product","Product delete")
   }
 
 }

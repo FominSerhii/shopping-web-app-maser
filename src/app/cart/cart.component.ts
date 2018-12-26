@@ -12,6 +12,9 @@ import { ProductsService } from '../products/products.service';
 
 export class CartComponent implements OnInit {
 
+  descending: boolean = false;
+  order: number;
+  column: any = 'price';
   messageTitle = 'No Cart Products Found';
   messageDescription = 'Please, choose your cart products';
 
@@ -32,5 +35,10 @@ export class CartComponent implements OnInit {
 
   getCartProduct() {
     this.cartProducts = this.cartService.getLocalCartProduct();
+  }
+
+  sort(){
+    this.descending = !this.descending;
+    this.order = this.descending ? 1 : -1;
   }
 }
