@@ -15,8 +15,6 @@
       </div>
     </div>
 
-   
-
       <div *ngFor='let product of cartProducts |  filter:term | sort: {property: column, order: order}' class="col-md-4 item-product">
 
         <h4>{{ product.name }}</h4>
