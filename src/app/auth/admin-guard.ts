@@ -13,14 +13,11 @@ export class AdminGaurd implements CanActivate {
   //   this.router.navigate(["no-access"]);
   //   return false;
   // }
-  canActivate(route, state: RouterStateSnapshot) {
-    console.log(this.authService.isLoggedIn());
+  canActivate() {
     if (this.authService.isLoggedIn()) {
       return true;
     }
-    this.router.navigate(["/signin"], {
-      queryParams: { returnUrl: state.url }
-    });
+    this.router.navigate(["/signup"]);
     return false;
   }
 }

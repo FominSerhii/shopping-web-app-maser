@@ -4,6 +4,8 @@ import { FormGroup, FormControl, NgForm } from '@angular/forms';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 
+import { ToastrService } from '../../toastr.service';
+
 import { User } from '../../user.model';
 import { AuthService } from '../auth.service';
 
@@ -22,7 +24,8 @@ export class SignupComponent implements OnInit {
   users: Observable<any>;
 
   constructor(private authService: AuthService,
-              private db: AngularFireDatabase) {
+              private db: AngularFireDatabase,
+              public toastr: ToastrService) {
     this.users = db.list('client').valueChanges();
   }
 
@@ -34,6 +37,7 @@ export class SignupComponent implements OnInit {
     const password = form.value.password;
     this.authService.signupUser(email, password);
     this.db.list('/client').push({Email: email,Passwod: password, isAdmin: false});
+    
   }
 
 }

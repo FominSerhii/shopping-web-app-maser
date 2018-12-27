@@ -4,6 +4,7 @@ import { AngularFireModule } from '@angular/fire';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
@@ -42,8 +43,12 @@ import { AdminProductsCreateComponent } from './products/admin-products/admin-pr
 
 import { ToastrModule } from 'ngx-toastr';
 
+import { SortPipe } from './sort.pipe';
 import { environment } from '../environments/environment';
 import { NoProductscartComponent } from './cart/no-productscart/no-productscart.component';
+import { NoAccessComponent } from './no-access/no-access.component';
+import { AdminGaurd } from './auth/admin-guard';
+import { ToastrService } from './toastr.service';
 
 
 @NgModule({
@@ -59,7 +64,9 @@ import { NoProductscartComponent } from './cart/no-productscart/no-productscart.
     AdminProductsComponent,
     AdminProductsCreateComponent,
     NoProductsFoundComponent,
-    NoProductscartComponent
+    NoProductscartComponent,
+    NoAccessComponent,
+    SortPipe
   ],
   imports: [
     HttpModule,
@@ -77,6 +84,7 @@ import { NoProductscartComponent } from './cart/no-productscart/no-productscart.
     MatToolbarModule,
     MatCheckboxModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
     AngularFireDatabaseModule,
@@ -99,7 +107,9 @@ import { NoProductscartComponent } from './cart/no-productscart/no-productscart.
     ProductsService,
     CartService,
     UserService,
-    FavouritesService
+    FavouritesService,
+    AdminGaurd  ,
+    ToastrService
   ],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ]

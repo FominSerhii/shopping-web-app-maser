@@ -10,10 +10,14 @@
               required
               placeholder="Find">
       </div>
-
+      <div class="sort">
+        <button mat-raised-button type="button" (click)="sort()">Sort by price</button>
+      </div>
     </div>
 
-      <div *ngFor='let product of cartProducts |  filter:term' class="col-md-4 item-product">
+   
+
+      <div *ngFor='let product of cartProducts |  filter:term | sort: {property: column, order: order}' class="col-md-4 item-product">
 
         <h4>{{ product.name }}</h4>
         <p>{{ product.price }} UAH</p>

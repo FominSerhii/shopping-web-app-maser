@@ -14,7 +14,9 @@ export class FavouritesComponent implements OnInit {
 
   messageTitle = 'No Favourite Products Found';
   messageDescription = 'Please, choose your favourite products';
-
+  descending: boolean = false;
+  order: number;
+  column: any = 'price';
   showDataNotFound = true;
   favouriteProducts: Product[];
 
@@ -23,6 +25,11 @@ export class FavouritesComponent implements OnInit {
 
   ngOnInit() {
     this.getFavouriteProduct();
+  }
+
+  sort(){
+    this.descending = !this.descending;
+    this.order = this.descending ? 1 : -1;
   }
 
   onDeleteFavourite(product: Product) {
