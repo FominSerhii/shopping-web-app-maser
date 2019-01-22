@@ -3,16 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import{ ToastrService } from '../../toastr.service';
 
 import {Pipe, PipeTransform} from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { OrderPipe } from 'ngx-order-pipe';
 import { SortPipe } from '../../sort.pipe';
 
 import { Product } from '../products.component';
+import{ ToastrService } from '../../toastr.service';
 import { CartService } from '../../cart/cart.service';
 import { ProductsService } from '../products.service';
 import { FavouritesService } from '../../favourites/favourites.service';
+import { ProductDetailComponent } from '../product-detail/product-detail.component';
 
 @Component({
   selector: 'app-product-list',
@@ -29,14 +31,25 @@ export class ProductListComponent implements OnInit {
   products: any;
   product: Product = new Product();
   counter = 0;
+  dialogResult = '';
 
   constructor(private productsService: ProductsService,
               private favouritesService: FavouritesService,
               private cartService: CartService,
-              public toastrService: ToastrService) {}
+              public toastrService: ToastrService,
+              public matdialog: MatDialog) {}
 
   ngOnInit() {
     this.getProductList();
+  }
+
+  openDialog(): void {
+    let dialogRef = this.matdialog.open(ProductDetailComponent, { width: '500px' });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog closed: ${result} `);
+      this.dialogResult = result;
+    });
   }
 
   getProductList() {

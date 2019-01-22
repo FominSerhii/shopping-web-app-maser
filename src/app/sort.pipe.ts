@@ -6,16 +6,19 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SortPipe implements PipeTransform {
 
   transform(array: Array<any>, args?: any): Array<any> {
-    return array.sort(function(a, b){
-      if(a[args.property] < b[args.property]){
-          return -1 * args.order;
-      }
-      else if( a[args.property] > b[args.property]){
-          return 1 * args.order;
-      }
-      else{
-          return 0;
-      }
-    });
+    if (array !== undefined) {
+      return array.sort(function(a, b){
+        if(a[args.property] < b[args.property]){
+            return -1 * args.order;
+        }
+        else if( a[args.property] > b[args.property]){
+            return 1 * args.order;
+        }
+        else{
+            return 0;
+        }
+      });
+    }
+    return array;
   }
 }

@@ -49,6 +49,7 @@ import { NoProductscartComponent } from './cart/no-productscart/no-productscart.
 import { NoAccessComponent } from './no-access/no-access.component';
 import { AdminGaurd } from './auth/admin-guard';
 import { ToastrService } from './toastr.service';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { ToastrService } from './toastr.service';
     NoProductsFoundComponent,
     NoProductscartComponent,
     NoAccessComponent,
-    SortPipe
+    SortPipe,
+    ProductDetailComponent
   ],
   imports: [
     HttpModule,
@@ -92,7 +94,7 @@ import { ToastrService } from './toastr.service';
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     Ng2SearchPipeModule,
     OrderModule,
-    ToastrModule.forRoot() 
+    ToastrModule.forRoot()
   ],
   exports: [
     MatButtonModule,
@@ -101,6 +103,7 @@ import { ToastrService } from './toastr.service';
   ],
   entryComponents: [
     AdminProductsCreateComponent,
+    ProductDetailComponent
   ],
   providers: [
     AuthService,

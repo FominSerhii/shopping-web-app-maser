@@ -39,6 +39,10 @@ export class ProductsService {
     return this.product;
   }
 
+  getProduct(index: number) {
+    return this.product[index];
+  }
+
   updateProduct(product: Product) {
     this.productsRef.update(product.key, {
         name: product.name,
